@@ -579,8 +579,8 @@ const pageDescription = "Creative direction, digital design, branding, and premi
         <a class="social-link" href="mailto:hello@volynx.world" aria-label="Email"><span>&#9993;</span></a>
         <a class="social-link" href="https://wa.me/447438656769" aria-label="WhatsApp" target="_blank" rel="noreferrer"><span>&#128172;</span></a>
       </div>
-      <p>&copy; <span id="year"></span> Eduardo Volken — Built with passion and precision</p>
-      <p style="margin-top:8px;font-size:11px;opacity:.5;">Built and maintained within the Volynx ecosystem.</p>
+      <p>&copy; <span id="year"></span> Eduardo Volken — <span data-i18n="footer.tagline">Built with passion and precision</span></p>
+      <p style="margin-top:8px;font-size:11px;opacity:.5;" data-i18n="footer.ecosystem">Built and maintained within the VOLYNX ecosystem.</p>
     </footer>
   </div>
 
@@ -662,6 +662,108 @@ const pageDescription = "Creative direction, digital design, branding, and premi
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.card, .project-card, .timeline-item').forEach(el => observer.observe(el));
+
+    // ═══ i18n ═══
+    const translations: Record<string, Record<string, string>> = {
+      en: {},
+      pt: {
+        "nav.about": "Sobre",
+        "nav.projects": "Projetos",
+        "nav.skills": "Habilidades",
+        "nav.experience": "Experiência",
+        "nav.contact": "Contato",
+        "hero.subtitle": "Direção criativa, design digital, branding e experiências web premium.",
+        "hero.cta1": "Ver Projetos",
+        "hero.cta2": "Entrar em Contato",
+        "about.title": "Sobre Mim",
+        "about.subtitle": "Conheça minha trajetória e especialidades",
+        "about.p1": "Sou um desenvolvedor e designer apaixonado por criar experiências digitais excepcionais. Com expertise em tecnologias web modernas e um olhar apurado para design, transformo ideias em realidade através de código limpo e interfaces bonitas.",
+        "about.p2": "Minha abordagem combina excelência técnica com resolução criativa de problemas, garantindo que cada projeto não apenas tenha uma ótima aparência, mas funcione perfeitamente. Estou comprometido em me manter atualizado com as últimas tecnologias e melhores práticas.",
+        "about.p3": "Seja construindo sites responsivos, criando interfaces intuitivas ou desenvolvendo aplicações web complexas, me dedico a entregar soluções de alta qualidade que superam expectativas.",
+        "projects.title": "Projetos em Destaque",
+        "projects.subtitle": "Uma seleção dos meus trabalhos e conquistas recentes",
+        "proj.lab_desc": "Plataforma de ferramentas web profissionais — processamento de imagem, geração de QR Code, conversão de formato e mais. Gratuito para uso, Pro para usuários avançados.",
+        "proj.studio_desc": "Kit de ferramentas de mídia profissional dentro do Lab — suite de imagem, scaler e conversor com processamento em lote e opções avançadas de exportação.",
+        "proj.portfolio_desc": "Sistema de portfolio premium — seções, animações e SEO construídos para conversão. Design + código entregues prontos para deploy.",
+        "proj.devj_desc": "Trilha de aprendizado autoguiada, baseada em projetos. Sem enrolação — salve progresso, desbloqueie checklists e ganhe certificado entregando trabalho real.",
+        "proj.jp_title": "Jhonatan Peterson — Gestor Imobiliário",
+        "proj.jp_desc": "Branding pessoal e presença digital para um profissional do mercado imobiliário — vitrine de imóveis, captação de leads e landing page voltada para conversões.",
+        "proj.valcarce_desc": "Landing page para complexo residencial de luxo — ícones VOLYNX customizados, conteúdo bilíngue, agendamento de visitas e chat com IA.",
+        "skills.title": "Habilidades & Tecnologias",
+        "skills.subtitle": "Ferramentas e tecnologias com as quais trabalho",
+        "exp.title": "Experiência",
+        "exp.subtitle": "Minha jornada profissional e conquistas",
+        "exp.date1": "2025 - Atual",
+        "exp.role1": "Desenvolvedor Full Stack Sênior",
+        "exp.desc1": "Liderando o desenvolvimento de aplicações web de nível empresarial usando tecnologias modernas. Arquitetando soluções escaláveis e mentorando desenvolvedores juniores.",
+        "exp.desc2": "Desenvolvi e mantive múltiplos projetos usando React, Node.js e serviços cloud. Melhorei a performance das aplicações em 40% através de técnicas de otimização.",
+        "exp.desc3": "Criei interfaces responsivas e acessíveis para diversas aplicações web. Colaborei com designers para implementar designs pixel-perfect.",
+        "exp.desc4": "Auxiliei na construção de aplicações web e aprendi práticas modernas de desenvolvimento. Contribuí tanto no frontend quanto no backend.",
+        "contact.title": "Entre em Contato",
+        "contact.subtitle": "Vamos trabalhar juntos no seu próximo projeto",
+        "contact.name": "Nome",
+        "contact.name_ph": "Seu nome",
+        "contact.email": "Email",
+        "contact.subject": "Assunto",
+        "contact.subject_ph": "Consulta sobre projeto",
+        "contact.message": "Mensagem",
+        "contact.message_ph": "Conte-me sobre seu projeto...",
+        "contact.send": "Enviar Mensagem",
+        "footer.tagline": "Construído com paixão e precisão",
+        "footer.ecosystem": "Construído e mantido dentro do ecossistema VOLYNX.",
+      }
+    };
+
+    let currentLang = localStorage.getItem("portfolio_lang") || "en";
+
+    function applyLang(lang: string) {
+      currentLang = lang;
+      localStorage.setItem("portfolio_lang", lang);
+      document.documentElement.lang = lang;
+
+      // Toggle active state on pills
+      document.querySelectorAll<HTMLElement>(".lang-toggle__opt").forEach(el => {
+        el.classList.toggle("is-active", el.dataset.lang === lang);
+      });
+      const indicator = document.getElementById("langIndicator");
+      if (indicator) indicator.classList.toggle("is-pt", lang === "pt");
+
+      // Apply text translations
+      document.querySelectorAll<HTMLElement>("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n!;
+        const dict = translations[lang];
+        if (lang === "en") {
+          // English is the default in HTML — restore from stored original
+          const orig = el.dataset.i18nOriginal;
+          if (orig !== undefined) el.textContent = orig;
+        } else if (dict && dict[key]) {
+          if (!el.dataset.i18nOriginal) el.dataset.i18nOriginal = el.textContent || "";
+          el.textContent = dict[key];
+        }
+      });
+
+      // Apply placeholder translations
+      document.querySelectorAll<HTMLElement>("[data-i18n-placeholder]").forEach(el => {
+        const key = (el as HTMLInputElement).dataset.i18nPlaceholder!;
+        const dict = translations[lang];
+        const input = el as HTMLInputElement;
+        if (lang === "en") {
+          const orig = el.dataset.i18nPhOriginal;
+          if (orig !== undefined) input.placeholder = orig;
+        } else if (dict && dict[key]) {
+          if (!el.dataset.i18nPhOriginal) el.dataset.i18nPhOriginal = input.placeholder || "";
+          input.placeholder = dict[key];
+        }
+      });
+    }
+
+    // Init
+    applyLang(currentLang);
+
+    // Toggle click
+    document.getElementById("langToggle")?.addEventListener("click", () => {
+      applyLang(currentLang === "en" ? "pt" : "en");
+    });
   </script>
 
   <script is:inline>
