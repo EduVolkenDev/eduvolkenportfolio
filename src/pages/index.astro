@@ -307,6 +307,51 @@ const pageDescription = "Creative direction, digital design, branding, and premi
       .btn { justify-content: center; padding: 12px 20px; font-size: 14px; }
       .chip { padding: 8px 12px; font-size: 12px; }
     }
+
+    /* ── Language Toggle ── */
+    .lang-toggle {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      cursor: pointer;
+      color: var(--text);
+      overflow: hidden;
+    }
+    .lang-toggle__opt {
+      position: relative;
+      z-index: 2;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      color: var(--muted);
+      transition: color 0.25s ease;
+      user-select: none;
+    }
+    .lang-toggle__opt.is-active {
+      color: #fff;
+    }
+    .lang-toggle__indicator {
+      position: absolute;
+      z-index: 1;
+      top: 3px;
+      left: 3px;
+      width: calc(50% - 3px);
+      height: calc(100% - 6px);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.6), rgba(6, 182, 212, 0.5));
+      box-shadow: 0 2px 10px rgba(168, 85, 247, 0.4);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .lang-toggle__indicator.is-pt {
+      transform: translateX(100%);
+    }
   </style>
 </head>
 
@@ -324,21 +369,28 @@ const pageDescription = "Creative direction, digital design, branding, and premi
           </div>
         </a>
         <nav class="nav">
-          <a class="chip" href="#about">About</a>
-          <a class="chip" href="#projects">Projects</a>
-          <a class="chip" href="#skills">Skills</a>
-          <a class="chip" href="#experience">Experience</a>
-          <a class="chip" href="#contact">Contact</a>
+          <a class="chip" href="#about" data-i18n="nav.about">About</a>
+          <a class="chip" href="#projects" data-i18n="nav.projects">Projects</a>
+          <a class="chip" href="#skills" data-i18n="nav.skills">Skills</a>
+          <a class="chip" href="#experience" data-i18n="nav.experience">Experience</a>
+          <a class="chip" href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
-        <button class="menuBtn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+            <span class="lang-toggle__opt" data-lang="en">EN</span>
+            <span class="lang-toggle__opt" data-lang="pt">PT</span>
+            <span class="lang-toggle__indicator" id="langIndicator"></span>
+          </button>
+          <button class="menuBtn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
+        </div>
       </div>
       <div class="drawer" id="drawer">
         <div class="drawer__inner">
-          <a class="chip" href="#about">About</a>
-          <a class="chip" href="#projects">Projects</a>
-          <a class="chip" href="#skills">Skills</a>
-          <a class="chip" href="#experience">Experience</a>
-          <a class="chip" href="#contact">Contact</a>
+          <a class="chip" href="#about" data-i18n="nav.about">About</a>
+          <a class="chip" href="#projects" data-i18n="nav.projects">Projects</a>
+          <a class="chip" href="#skills" data-i18n="nav.skills">Skills</a>
+          <a class="chip" href="#experience" data-i18n="nav.experience">Experience</a>
+          <a class="chip" href="#contact" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </header>
@@ -348,10 +400,10 @@ const pageDescription = "Creative direction, digital design, branding, and premi
       <img class="hero__icon" src="/volynx-icon.webp" alt="Eduardo Volken" />
       <img class="hero__wordmark" src="/wordmark.webp" alt="VOLYNX" />
       <h1>Eduardo Volken</h1>
-      <p class="hero__subtitle">Creative direction, digital design, branding, and premium web experiences.</p>
+      <p class="hero__subtitle" data-i18n="hero.subtitle">Creative direction, digital design, branding, and premium web experiences.</p>
       <div class="hero__cta">
-        <a class="btn" href="#projects">View Projects</a>
-        <a class="btn btn--ghost" href="#contact">Get in Touch</a>
+        <a class="btn" href="#projects" data-i18n="hero.cta1">View Projects</a>
+        <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">Get in Touch</a>
       </div>
     </section>
 
@@ -360,14 +412,14 @@ const pageDescription = "Creative direction, digital design, branding, and premi
 
       <!-- About -->
       <section id="about">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">Learn more about my background and expertise</p>
+        <h2 class="section-title" data-i18n="about.title">About Me</h2>
+        <p class="section-subtitle" data-i18n="about.subtitle">Learn more about my background and expertise</p>
         <div class="card">
           <div class="about-content">
             <div class="about-text">
-              <p>I'm a passionate developer and designer focused on creating exceptional digital experiences. With expertise in modern web technologies and a keen eye for design, I bring ideas to life through clean code and beautiful interfaces.</p>
-              <p>My approach combines technical excellence with creative problem-solving, ensuring that every project not only looks great but performs flawlessly. I'm committed to staying current with the latest technologies and best practices.</p>
-              <p>Whether it's building responsive websites, crafting intuitive user interfaces, or developing complex web applications, I'm dedicated to delivering high-quality solutions that exceed expectations.</p>
+              <p data-i18n="about.p1">I'm a passionate developer and designer focused on creating exceptional digital experiences. With expertise in modern web technologies and a keen eye for design, I bring ideas to life through clean code and beautiful interfaces.</p>
+              <p data-i18n="about.p2">My approach combines technical excellence with creative problem-solving, ensuring that every project not only looks great but performs flawlessly. I'm committed to staying current with the latest technologies and best practices.</p>
+              <p data-i18n="about.p3">Whether it's building responsive websites, crafting intuitive user interfaces, or developing complex web applications, I'm dedicated to delivering high-quality solutions that exceed expectations.</p>
             </div>
             <div class="about-image">
               <img src="/edu-img.jpeg" alt="Eduardo Volken" />
@@ -378,14 +430,14 @@ const pageDescription = "Creative direction, digital design, branding, and premi
 
       <!-- Projects -->
       <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">A selection of my recent work and achievements</p>
+        <h2 class="section-title" data-i18n="projects.title">Featured Projects</h2>
+        <p class="section-subtitle" data-i18n="projects.subtitle">A selection of my recent work and achievements</p>
         <div class="projects-grid">
           <article class="project-card">
             <img class="project-image" src="/lablogo.webp" alt="VOLYNX Lab" />
             <div class="project-content">
               <h3 class="project-title">VOLYNX Lab</h3>
-              <p class="project-description">Production-grade web tools platform — image processing, QR generation, format conversion and more. Free to use, Pro for power users.</p>
+              <p class="project-description" data-i18n="proj.lab_desc">Production-grade web tools platform — image processing, QR generation, format conversion and more. Free to use, Pro for power users.</p>
               <div class="project-tags"><span class="tag">Astro</span><span class="tag">TypeScript</span><span class="tag">Canvas API</span><span class="tag">PWA</span></div>
               <a class="project-link" href="https://volynx.world/volynx-lab/" target="_blank" rel="noreferrer">View Project →</a>
             </div>
@@ -395,7 +447,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
             <img class="project-image" src="/studio-logo.webp" alt="Studio Pro" />
             <div class="project-content">
               <h3 class="project-title">Studio Pro</h3>
-              <p class="project-description">Professional media toolkit inside the Lab — image suite, scaler, and converter with batch processing and advanced export options.</p>
+              <p class="project-description" data-i18n="proj.studio_desc">Professional media toolkit inside the Lab — image suite, scaler, and converter with batch processing and advanced export options.</p>
               <div class="project-tags"><span class="tag">Astro</span><span class="tag">Web APIs</span><span class="tag">Image Processing</span><span class="tag">UI/UX</span></div>
               <a class="project-link" href="https://volynx.world/volynx-lab/studio/" target="_blank" rel="noreferrer">View Project →</a>
             </div>
@@ -405,7 +457,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
             <img class="project-image" src="/portfolio.webp" alt="Premium Portfolio" />
             <div class="project-content">
               <h3 class="project-title">Premium Portfolio</h3>
-              <p class="project-description">Premium portfolio system — sections, motion, and SEO built for conversion. Design + code delivered as a ready-to-deploy experience.</p>
+              <p class="project-description" data-i18n="proj.portfolio_desc">Premium portfolio system — sections, motion, and SEO built for conversion. Design + code delivered as a ready-to-deploy experience.</p>
               <div class="project-tags"><span class="tag">Astro</span><span class="tag">CSS</span><span class="tag">Figma</span><span class="tag">SEO</span></div>
             </div>
           </article>
@@ -414,7 +466,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
             <img class="project-image" src="/devjourney.webp" alt="Dev Journey" />
             <div class="project-content">
               <h3 class="project-title">Dev Journey</h3>
-              <p class="project-description">Self-guided, project-based learning track. No video fluff — save progress, unlock checklists, and earn a certificate by shipping real work.</p>
+              <p class="project-description" data-i18n="proj.devj_desc">Self-guided, project-based learning track. No video fluff — save progress, unlock checklists, and earn a certificate by shipping real work.</p>
               <div class="project-tags"><span class="tag">Education</span><span class="tag">Astro</span><span class="tag">Full Stack</span><span class="tag">Certification</span></div>
               <a class="project-link" href="https://volynx.world/dev-journey/" target="_blank" rel="noreferrer">View Project →</a>
             </div>
@@ -423,10 +475,10 @@ const pageDescription = "Creative direction, digital design, branding, and premi
           <article class="project-card">
             <img class="project-image" src="/parisnez-logo.webp" alt="Mobile App" />
             <div class="project-content">
-              <h3 class="project-title">Jhonatan Peterson Gestor Imobiliário</h3>
-              <p class="project-description">Cross-platform mobile application with intuitive UI/UX and native performance built for the VOLYNX ecosystem.</p>
+              <h3 class="project-title" data-i18n="proj.jp_title">Jhonatan Peterson — Real Estate Manager</h3>
+              <p class="project-description" data-i18n="proj.jp_desc">Personal branding and digital presence for a real estate professional — property showcase, lead capture, and client-facing landing page built for conversions.</p>
               <div class="project-tags"><span class="tag">React Native</span><span class="tag">Firebase</span><span class="tag">UI/UX</span><span class="tag">Mobile</span></div>
-              <span class="project-link" aria-disabled="true" style="opacity:.5;cursor:default;">View Project →</span>
+              <span class="project-link" href="https://www.jhonatanpetersonimoveis.com.br">View Project →</span>
             </div>
           </article>
 
@@ -434,7 +486,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
             <img class="project-image" src="/studiosvalcarcecard.webp" alt="Studios Valcarce" />
             <div class="project-content">
               <h3 class="project-title">Studios Valcarce</h3>
-              <p class="project-description">Luxury residential complex landing page — custom VOLYNX icons, bilingual content, appointment scheduling and AI-powered chat support.</p>
+              <p class="project-description" data-i18n="proj.valcarce_desc">Luxury residential complex landing page — custom VOLYNX icons, bilingual content, appointment scheduling and AI-powered chat support.</p>
               <div class="project-tags"><span class="tag">Client</span><span class="tag">VOLYNX Icons</span><span class="tag">Astro</span><span class="tag">Landing</span></div>
               <a class="project-link" href="https://studiosvalcarcecopy.vercel.app" target="_blank" rel="noreferrer">View Project →</a>
             </div>
@@ -444,8 +496,8 @@ const pageDescription = "Creative direction, digital design, branding, and premi
 
       <!-- Skills -->
       <section id="skills">
-        <h2 class="section-title">Skills &amp; Technologies</h2>
-        <p class="section-subtitle">Tools and technologies I work with</p>
+        <h2 class="section-title" data-i18n="skills.title">Skills &amp; Technologies</h2>
+        <p class="section-subtitle" data-i18n="skills.subtitle">Tools and technologies I work with</p>
         <div class="card">
           <div class="skills-grid">
             <div class="skill-item"><img class="skill-icon" src="/1.webp" alt="React" /></div>
@@ -471,33 +523,33 @@ const pageDescription = "Creative direction, digital design, branding, and premi
 
       <!-- Experience -->
       <section id="experience">
-        <h2 class="section-title">Experience</h2>
-        <p class="section-subtitle">My professional journey and achievements</p>
+        <h2 class="section-title" data-i18n="exp.title">Experience</h2>
+        <p class="section-subtitle" data-i18n="exp.subtitle">My professional journey and achievements</p>
         <div class="card">
           <div class="timeline">
             <div class="timeline-item">
-              <span class="timeline-date">2025 - Present</span>
-              <h3 class="timeline-title">Senior Full Stack Developer</h3>
+              <span class="timeline-date" data-i18n="exp.date1">2025 - Present</span>
+              <h3 class="timeline-title" data-i18n="exp.role1">Senior Full Stack Developer</h3>
               <div class="timeline-company">VOLYNX</div>
-              <p class="timeline-description">Leading development of enterprise-level web applications using modern technologies. Architecting scalable solutions and mentoring junior developers.</p>
+              <p class="timeline-description" data-i18n="exp.desc1">Leading development of enterprise-level web applications using modern technologies. Architecting scalable solutions and mentoring junior developers.</p>
             </div>
             <div class="timeline-item">
               <span class="timeline-date">2024 - 2025</span>
               <h3 class="timeline-title">Full Stack Developer</h3>
               <div class="timeline-company">VOLYNX</div>
-              <p class="timeline-description">Developed and maintained multiple client projects using React, Node.js, and cloud services. Improved application performance by 40% through optimization techniques.</p>
+              <p class="timeline-description" data-i18n="exp.desc2">Developed and maintained multiple client projects using React, Node.js, and cloud services. Improved application performance by 40% through optimization techniques.</p>
             </div>
             <div class="timeline-item">
               <span class="timeline-date">2022 - 2024</span>
               <h3 class="timeline-title">Frontend Developer</h3>
               <div class="timeline-company">Freelance Web Developer</div>
-              <p class="timeline-description">Created responsive and accessible user interfaces for various web applications. Collaborated with designers to implement pixel-perfect designs.</p>
+              <p class="timeline-description" data-i18n="exp.desc3">Created responsive and accessible user interfaces for various web applications. Collaborated with designers to implement pixel-perfect designs.</p>
             </div>
             <div class="timeline-item">
               <span class="timeline-date">2021 - 2022</span>
               <h3 class="timeline-title">Junior Web Developer</h3>
               <div class="timeline-company">StartUp Labs</div>
-              <p class="timeline-description">Assisted in building web applications and learned modern development practices. Contributed to both frontend and backend development tasks.</p>
+              <p class="timeline-description" data-i18n="exp.desc4">Assisted in building web applications and learned modern development practices. Contributed to both frontend and backend development tasks.</p>
             </div>
           </div>
         </div>
@@ -505,16 +557,16 @@ const pageDescription = "Creative direction, digital design, branding, and premi
 
       <!-- Contact -->
       <section id="contact">
-        <h2 class="section-title">Get in Touch</h2>
-        <p class="section-subtitle">Let's work together on your next project</p>
+        <h2 class="section-title" data-i18n="contact.title">Get in Touch</h2>
+        <p class="section-subtitle" data-i18n="contact.subtitle">Let's work together on your next project</p>
         <div class="card">
           <form class="contact-form" id="contactForm">
-            <label>Name<input name="name" autocomplete="name" placeholder="Your name" required /></label>
-            <label>Email<input name="email" type="email" autocomplete="email" placeholder="your@email.com" required /></label>
-            <label>Subject<input name="subject" placeholder="Project inquiry" required /></label>
-            <label>Message<textarea name="message" placeholder="Tell me about your project..." required></textarea></label>
+            <label data-i18n="contact.name">Name<input name="name" autocomplete="name" data-i18n-placeholder="contact.name_ph" placeholder="Your name" required /></label>
+            <label data-i18n="contact.email">Email<input name="email" type="email" autocomplete="email" placeholder="your@email.com" required /></label>
+            <label data-i18n="contact.subject">Subject<input name="subject" data-i18n-placeholder="contact.subject_ph" placeholder="Project inquiry" required /></label>
+            <label data-i18n="contact.message">Message<textarea name="message" data-i18n-placeholder="contact.message_ph" placeholder="Tell me about your project..." required></textarea></label>
             <p class="section-subtitle" id="contactStatus" role="status" aria-live="polite" style="margin:0;"></p>
-            <button class="btn" type="submit">Send Message</button>
+            <button class="btn" type="submit" data-i18n="contact.send">Send Message</button>
           </form>
         </div>
       </section>
