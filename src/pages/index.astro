@@ -365,7 +365,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
           <div class="brand__mark">EV</div>
           <div class="brand__text">
             <strong>Eduardo Volken</strong>
-            <span>Creative Direction & Digital Design</span>
+            <span data-i18n="brand.subtitle">Creative Direction & Digital Design</span>
           </div>
         </a>
         <nav class="nav">
@@ -391,6 +391,11 @@ const pageDescription = "Creative direction, digital design, branding, and premi
           <a class="chip" href="#skills" data-i18n="nav.skills">Skills</a>
           <a class="chip" href="#experience" data-i18n="nav.experience">Experience</a>
           <a class="chip" href="#contact" data-i18n="nav.contact">Contact</a>
+          <button class="lang-toggle" id="langToggleDrawer" type="button" aria-label="Switch language">
+            <span class="lang-toggle__opt" data-lang="en">EN</span>
+            <span class="lang-toggle__opt" data-lang="pt">PT</span>
+            <span class="lang-toggle__indicator" id="langIndicatorDrawer"></span>
+          </button>
         </div>
       </div>
     </header>
@@ -439,7 +444,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
               <h3 class="project-title">VOLYNX Lab</h3>
               <p class="project-description" data-i18n="proj.lab_desc">Production-grade web tools platform — image processing, QR generation, format conversion and more. Free to use, Pro for power users.</p>
               <div class="project-tags"><span class="tag">Astro</span><span class="tag">TypeScript</span><span class="tag">Canvas API</span><span class="tag">PWA</span></div>
-              <a class="project-link" href="https://volynx.world/volynx-lab/" target="_blank" rel="noreferrer">View Project →</a>
+              <a class="project-link" href="https://volynx.world/volynx-lab/" target="_blank" rel="noreferrer" data-i18n="proj.view">View Project →</a>
             </div>
           </article>
 
@@ -449,7 +454,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
               <h3 class="project-title">Studio Pro</h3>
               <p class="project-description" data-i18n="proj.studio_desc">Professional media toolkit inside the Lab — image suite, scaler, and converter with batch processing and advanced export options.</p>
               <div class="project-tags"><span class="tag">Astro</span><span class="tag">Web APIs</span><span class="tag">Image Processing</span><span class="tag">UI/UX</span></div>
-              <a class="project-link" href="https://volynx.world/volynx-lab/studio/" target="_blank" rel="noreferrer">View Project →</a>
+              <a class="project-link" href="https://volynx.world/volynx-lab/studio/" target="_blank" rel="noreferrer" data-i18n="proj.view">View Project →</a>
             </div>
           </article>
 
@@ -468,17 +473,17 @@ const pageDescription = "Creative direction, digital design, branding, and premi
               <h3 class="project-title">Dev Journey</h3>
               <p class="project-description" data-i18n="proj.devj_desc">Self-guided, project-based learning track. No video fluff — save progress, unlock checklists, and earn a certificate by shipping real work.</p>
               <div class="project-tags"><span class="tag">Education</span><span class="tag">Astro</span><span class="tag">Full Stack</span><span class="tag">Certification</span></div>
-              <a class="project-link" href="https://volynx.world/dev-journey/" target="_blank" rel="noreferrer">View Project →</a>
+              <a class="project-link" href="https://volynx.world/dev-journey/" target="_blank" rel="noreferrer" data-i18n="proj.view">View Project →</a>
             </div>
           </article>
 
           <article class="project-card">
-            <img class="project-image" src="/parisnez-logo.webp" alt="Mobile App" />
+            <img class="project-image" src="/parisnez-logo.webp" alt="Jhonatan Peterson" />
             <div class="project-content">
               <h3 class="project-title" data-i18n="proj.jp_title">Jhonatan Peterson — Real Estate Manager</h3>
               <p class="project-description" data-i18n="proj.jp_desc">Personal branding and digital presence for a real estate professional — property showcase, lead capture, and client-facing landing page built for conversions.</p>
               <div class="project-tags"><span class="tag">React Native</span><span class="tag">Firebase</span><span class="tag">UI/UX</span><span class="tag">Mobile</span></div>
-              <span class="project-link" href="https://www.jhonatanpetersonimoveis.com.br">View Project →</span>
+              <a class="project-link" href="https://www.jhonatanpetersonimoveis.com.br" target="_blank" rel="noreferrer" data-i18n="proj.view">View Project →</a>
             </div>
           </article>
 
@@ -488,7 +493,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
               <h3 class="project-title">Studios Valcarce</h3>
               <p class="project-description" data-i18n="proj.valcarce_desc">Luxury residential complex landing page — custom VOLYNX icons, bilingual content, appointment scheduling and AI-powered chat support.</p>
               <div class="project-tags"><span class="tag">Client</span><span class="tag">VOLYNX Icons</span><span class="tag">Astro</span><span class="tag">Landing</span></div>
-              <a class="project-link" href="https://studiosvalcarcecopy.vercel.app" target="_blank" rel="noreferrer">View Project →</a>
+              <a class="project-link" href="https://studiosvalcarcecopy.vercel.app" target="_blank" rel="noreferrer" data-i18n="proj.view">View Project →</a>
             </div>
           </article>
         </div>
@@ -534,20 +539,20 @@ const pageDescription = "Creative direction, digital design, branding, and premi
               <p class="timeline-description" data-i18n="exp.desc1">Leading development of enterprise-level web applications using modern technologies. Architecting scalable solutions and mentoring junior developers.</p>
             </div>
             <div class="timeline-item">
-              <span class="timeline-date">2024 - 2025</span>
-              <h3 class="timeline-title">Full Stack Developer</h3>
+              <span class="timeline-date" data-i18n="exp.date2">2024 - 2025</span>
+              <h3 class="timeline-title" data-i18n="exp.role2">Full Stack Developer</h3>
               <div class="timeline-company">VOLYNX</div>
               <p class="timeline-description" data-i18n="exp.desc2">Developed and maintained multiple client projects using React, Node.js, and cloud services. Improved application performance by 40% through optimization techniques.</p>
             </div>
             <div class="timeline-item">
-              <span class="timeline-date">2022 - 2024</span>
-              <h3 class="timeline-title">Frontend Developer</h3>
-              <div class="timeline-company">Freelance Web Developer</div>
+              <span class="timeline-date" data-i18n="exp.date3">2022 - 2024</span>
+              <h3 class="timeline-title" data-i18n="exp.role3">Frontend Developer</h3>
+              <div class="timeline-company" data-i18n="exp.company3">Freelance Web Developer</div>
               <p class="timeline-description" data-i18n="exp.desc3">Created responsive and accessible user interfaces for various web applications. Collaborated with designers to implement pixel-perfect designs.</p>
             </div>
             <div class="timeline-item">
-              <span class="timeline-date">2021 - 2022</span>
-              <h3 class="timeline-title">Junior Web Developer</h3>
+              <span class="timeline-date" data-i18n="exp.date4">2021 - 2022</span>
+              <h3 class="timeline-title" data-i18n="exp.role4">Junior Web Developer</h3>
               <div class="timeline-company">StartUp Labs</div>
               <p class="timeline-description" data-i18n="exp.desc4">Assisted in building web applications and learned modern development practices. Contributed to both frontend and backend development tasks.</p>
             </div>
@@ -667,6 +672,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
     const translations: Record<string, Record<string, string>> = {
       en: {},
       pt: {
+        "brand.subtitle": "Direção Criativa & Design Digital",
         "nav.about": "Sobre",
         "nav.projects": "Projetos",
         "nav.skills": "Habilidades",
@@ -689,6 +695,7 @@ const pageDescription = "Creative direction, digital design, branding, and premi
         "proj.jp_title": "Jhonatan Peterson — Gestor Imobiliário",
         "proj.jp_desc": "Branding pessoal e presença digital para um profissional do mercado imobiliário — vitrine de imóveis, captação de leads e landing page voltada para conversões.",
         "proj.valcarce_desc": "Landing page para complexo residencial de luxo — ícones VOLYNX customizados, conteúdo bilíngue, agendamento de visitas e chat com IA.",
+        "proj.view": "Ver Projeto →",
         "skills.title": "Habilidades & Tecnologias",
         "skills.subtitle": "Ferramentas e tecnologias com as quais trabalho",
         "exp.title": "Experiência",
@@ -696,8 +703,15 @@ const pageDescription = "Creative direction, digital design, branding, and premi
         "exp.date1": "2025 - Atual",
         "exp.role1": "Desenvolvedor Full Stack Sênior",
         "exp.desc1": "Liderando o desenvolvimento de aplicações web de nível empresarial usando tecnologias modernas. Arquitetando soluções escaláveis e mentorando desenvolvedores juniores.",
+        "exp.date2": "2024 - 2025",
+        "exp.role2": "Desenvolvedor Full Stack",
         "exp.desc2": "Desenvolvi e mantive múltiplos projetos usando React, Node.js e serviços cloud. Melhorei a performance das aplicações em 40% através de técnicas de otimização.",
+        "exp.date3": "2022 - 2024",
+        "exp.role3": "Desenvolvedor Frontend",
+        "exp.company3": "Desenvolvedor Web Freelancer",
         "exp.desc3": "Criei interfaces responsivas e acessíveis para diversas aplicações web. Colaborei com designers para implementar designs pixel-perfect.",
+        "exp.date4": "2021 - 2022",
+        "exp.role4": "Desenvolvedor Web Júnior",
         "exp.desc4": "Auxiliei na construção de aplicações web e aprendi práticas modernas de desenvolvimento. Contribuí tanto no frontend quanto no backend.",
         "contact.title": "Entre em Contato",
         "contact.subtitle": "Vamos trabalhar juntos no seu próximo projeto",
@@ -721,12 +735,13 @@ const pageDescription = "Creative direction, digital design, branding, and premi
       localStorage.setItem("portfolio_lang", lang);
       document.documentElement.lang = lang;
 
-      // Toggle active state on pills
+      // Toggle active state on all lang toggle pills (topbar + drawer)
       document.querySelectorAll<HTMLElement>(".lang-toggle__opt").forEach(el => {
         el.classList.toggle("is-active", el.dataset.lang === lang);
       });
-      const indicator = document.getElementById("langIndicator");
-      if (indicator) indicator.classList.toggle("is-pt", lang === "pt");
+      document.querySelectorAll<HTMLElement>(".lang-toggle__indicator").forEach(ind => {
+        ind.classList.toggle("is-pt", lang === "pt");
+      });
 
       // Apply text translations
       document.querySelectorAll<HTMLElement>("[data-i18n]").forEach(el => {
@@ -760,8 +775,11 @@ const pageDescription = "Creative direction, digital design, branding, and premi
     // Init
     applyLang(currentLang);
 
-    // Toggle click
+    // Toggle click (both topbar and drawer)
     document.getElementById("langToggle")?.addEventListener("click", () => {
+      applyLang(currentLang === "en" ? "pt" : "en");
+    });
+    document.getElementById("langToggleDrawer")?.addEventListener("click", () => {
       applyLang(currentLang === "en" ? "pt" : "en");
     });
   </script>
